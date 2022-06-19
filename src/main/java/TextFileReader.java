@@ -50,7 +50,7 @@ public class TextFileReader {
         try {
             while (( line = input.readLine()) != null){
                 if (!line.isBlank()) {
-                    return line;
+                    return line.trim();
                 }
             }
         } catch (IOException e) {

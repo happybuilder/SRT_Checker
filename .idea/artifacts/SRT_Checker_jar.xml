@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SRT_Checker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SRT_Checker_jar</output-path>
+    <root id="archive" name="SRT_Checker.jar">
+      <element id="module-output" name="SRT_Checker" />
+    </root>
+  </artifact>
+</component>

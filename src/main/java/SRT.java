@@ -17,14 +17,23 @@ public class SRT {
     }
 
     static public void writeCapture(Caption caption, BufferedWriter output) {
+//        try {
+//            output.write(String.valueOf(caption.getSeqNum())); output.newLine();
+//            output.write(caption.getDuration()); output.newLine();
+//            output.write(caption.getLang1()); output.newLine();
+//            if (!caption.getLang2().isBlank()) {
+//                output.write(caption.getLang2()); output.newLine();
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         try {
             output.write(String.valueOf(caption.getSeqNum())); output.newLine();
             output.write(caption.getDuration()); output.newLine();
             output.write(caption.getLang1()); output.newLine();
             if (!caption.getLang2().isBlank()) {
-                output.write(caption.getLang2()); output.newLine();
+                output.write(caption.getLang2());
             }
-            output.newLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,8 +49,11 @@ public class SRT {
         try {
             BufferedWriter output = new BufferedWriter(new FileWriter(aFile));
             try {
-                for(Caption cap : this.captions) {
-                    writeCapture(cap, output);
+                writeCapture(this.captions.get(0), output);
+                for(int i = 1; i < this.captions.size(); i++) {
+                    output.newLine();
+                    output.newLine();
+                    writeCapture(this.captions.get(i), output);
                 }
             }
             finally {
