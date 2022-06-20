@@ -21,13 +21,19 @@ public class SRT_Checker {
         outFile = new File(readOutputPath(args, inFile));
 
         if (inFile.exists()) {
-            captionList = TextFileReader.getAllCaption(inFile);
-            srt.setCaptions(captionList);
-            srt.listAllCaption();
-            srt.writeFile(outFile);
-            System.out.println("Input file: " + inFile.getPath());
-            System.out.println("Output file: " + outFile.getPath());
-            System.out.println("Number of captions: " + srt.getCaptionCount());
+            try {
+                captionList = TextFileReader.getAllCaption(inFile);
+                srt.setCaptions(captionList);
+                srt.listAllCaption();
+                srt.writeFile(outFile);
+                System.out.println("Input file: " + inFile.getPath());
+                System.out.println("Output file: " + outFile.getPath());
+                System.out.println("Number of captions: " + srt.getCaptionCount());
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Application is stopped abnormally.");
+            }
         }
         else {
             System.out.println("File does not exists: " + inFile.getAbsolutePath());

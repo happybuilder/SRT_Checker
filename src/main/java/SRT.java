@@ -17,16 +17,6 @@ public class SRT {
     }
 
     static public void writeCapture(Caption caption, BufferedWriter output) {
-//        try {
-//            output.write(String.valueOf(caption.getSeqNum())); output.newLine();
-//            output.write(caption.getDuration()); output.newLine();
-//            output.write(caption.getLang1()); output.newLine();
-//            if (!caption.getLang2().isBlank()) {
-//                output.write(caption.getLang2()); output.newLine();
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
         try {
             output.write(String.valueOf(caption.getSeqNum())); output.newLine();
             output.write(caption.getDuration()); output.newLine();

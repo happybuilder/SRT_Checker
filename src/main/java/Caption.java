@@ -1,5 +1,10 @@
 public class Caption {
-    private int langCount;
+
+    public enum CaptionType {
+        SINGLE_LANG, DUAL_LANG
+    }
+
+    private CaptionType captionType;
     private int seqNum;
     private String duration;
     private String lang1;
@@ -11,18 +16,18 @@ public class Caption {
         this.lang1 = lang1;
         this.lang2 = lang2;
         if (lang2.isBlank()) {
-            this.langCount = 1;
+            this.captionType = CaptionType.SINGLE_LANG;
         } else {
-            this.langCount = 2;
+            this.captionType = CaptionType.DUAL_LANG;
         }
     }
 
-    public int getLangCount() {
-        return langCount;
+    public CaptionType getCaptionType() {
+        return captionType;
     }
 
-    public void setLangCount(int langCount) {
-        this.langCount = langCount;
+    public void setCaptionType(CaptionType captionType) {
+        this.captionType = captionType;
     }
 
     public int getSeqNum() {
