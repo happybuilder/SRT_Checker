@@ -1,3 +1,5 @@
+package com.webdesign;
+
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +17,7 @@ public class SRT_Checker {
         // Read all arguments from command line.
         inFile = new File(readInputPath(args));
         if (inFile == null) {
+            System.out.println(args[0]);
             System.out.println("Input file missing. Application end.");
             return;
         }

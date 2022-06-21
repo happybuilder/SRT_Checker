@@ -1,3 +1,5 @@
+package com.webdesign;
+
 public class Caption {
 
     public enum CaptionType {

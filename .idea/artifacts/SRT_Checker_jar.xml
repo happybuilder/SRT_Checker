@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/SRT_Checker_jar</output-path>
     <root id="archive" name="SRT_Checker.jar">
       <element id="module-output" name="SRT_Checker" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

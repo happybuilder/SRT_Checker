@@ -1,3 +1,5 @@
+package com.webdesign;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class TextFileReader {
                     try {
                         seqNum = nextLine != null ? Integer.parseInt(nextLine) : Integer.parseInt(line);
                     } catch(NumberFormatException e) {
-                        System.out.println("Too many lines in Caption: " + prevSeqNum);
+                        System.out.println("Too many lines in com.webdesign.Caption: " + prevSeqNum);
                         throw e;
                     }
                     captionList.add(getCaption(input, seqNum));
