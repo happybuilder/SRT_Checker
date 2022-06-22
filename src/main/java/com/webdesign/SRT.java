@@ -12,7 +12,7 @@ public class SRT {
         System.out.println(caption.getSeqNum());
         System.out.println(caption.getDuration());
         System.out.println(caption.getLang1());
-        if (!caption.getLang2().isBlank()) {
+        if (!CommonUtils.stringIsBlank(caption.getLang2())) {
             System.out.println(caption.getLang2());
         }
         System.out.println();
@@ -22,8 +22,9 @@ public class SRT {
         try {
             output.write(String.valueOf(caption.getSeqNum())); output.newLine();
             output.write(caption.getDuration()); output.newLine();
-            output.write(caption.getLang1()); output.newLine();
-            if (!caption.getLang2().isBlank()) {
+            output.write(caption.getLang1());
+            if (!CommonUtils.stringIsBlank(caption.getLang2())) {
+                output.newLine();
                 output.write(caption.getLang2());
             }
         } catch (IOException e) {

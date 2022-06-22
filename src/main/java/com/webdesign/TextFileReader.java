@@ -23,9 +23,10 @@ public class TextFileReader {
                         continue;
                     prevSeqNum = seqNum;
                     try {
-                        seqNum = nextLine != null ? Integer.parseInt(nextLine) : Integer.parseInt(line);
+//                        System.out.println("seqNum: " + seqNum);
+                        seqNum = nextLine != null ? Integer.parseInt(removeUTF8BOM(nextLine)) : Integer.parseInt(removeUTF8BOM(line));
                     } catch(NumberFormatException e) {
-                        System.out.println("Too many lines in com.webdesign.Caption: " + prevSeqNum);
+                        System.out.println("Too many lines in Caption: " + prevSeqNum);
                         throw e;
                     }
                     captionList.add(getCaption(input, seqNum));
@@ -50,7 +51,7 @@ public class TextFileReader {
         duration = readNextTextLine(input);
         lang1 = readNextTextLine(input);    // First language.
         lang2 = readNextTextLine(input);    // Second language.
-        if (isInteger(lang2) && Integer.parseInt(lang2) == seqNum + 1) {
+        if (CommonUtils.isInteger(lang2) && Integer.parseInt(lang2) == seqNum + 1) {
             nextLine = lang2;
             lang2 = "";
         }
@@ -75,24 +76,12 @@ public class TextFileReader {
         return null;
     }
 
-    public static boolean isInteger(String s) {
-        try {
-            Integer.parseInt(s);
-        } catch(NumberFormatException e) {
-            return false;
-        } catch(NullPointerException e) {
-            return false;
+    // FEFF because this is the Unicode char represented by the UTF-8 byte order mark (EF BB BF).
+    public static final String UTF8_BOM = "\uFEFF";
+    private static String removeUTF8BOM(String s) {
+        if (s.startsWith(UTF8_BOM)) {
+            s = s.substring(1);
         }
-        // only got here if we didn't return false
-        return true;
+        return s;
     }
-
-//    public String getNextLine() {
-//        return nextLine;
-//    }
-//
-//    public void setNextLine(String nextLine) {
-//        this.nextLine = nextLine;
-//    }
-
 }

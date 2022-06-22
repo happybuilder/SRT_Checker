@@ -17,7 +17,7 @@ public class Caption {
         this.duration = duration;
         this.lang1 = lang1;
         this.lang2 = lang2;
-        if (lang2.isBlank()) {
+        if (CommonUtils.stringIsBlank(lang2)) {
             this.captionType = CaptionType.SINGLE_LANG;
         } else {
             this.captionType = CaptionType.DUAL_LANG;
